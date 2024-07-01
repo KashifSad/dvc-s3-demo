@@ -21,18 +21,18 @@ scaler = StandardScaler()
 x_scaled = scaler.fit_transform(x)
 
 # Applying PCA
-pca = PCA(n_components=2)
+pca = PCA(n_components=3)
 x_pca = pca.fit_transform(x_scaled)
 
 # Creating a DataFrame with the PCA results
-df_pca = pd.DataFrame(data=x_pca, columns=['PCA1', 'PCA2'])
+df_pca = pd.DataFrame(data=x_pca, columns=['PCA1', 'PCA2','PCA3'])
 
 # Adding the Student_ID and Performance_Label back to the DataFrame
 df_pca['Student_ID'] = df['Student_ID']
 df_pca['Performance_Label'] = df['Performance_Label']
 
 # Reordering columns
-df_pca = df_pca[['Student_ID', 'PCA1', 'PCA2', 'Performance_Label']]
+df_pca = df_pca[['Student_ID', 'PCA1', 'PCA2','PCA3','Performance_Label']]
 
 # Writing the processed data to a new CSV file
 df_pca.to_csv(output_csv_path, index=False)
